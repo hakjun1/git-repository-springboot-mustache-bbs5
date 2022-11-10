@@ -61,6 +61,29 @@ public class ArticleController {
         return "list";
     }
 
+    @GetMapping("{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        Optional<Article> article = articleRepository.findById(id);
+        if (!article.isEmpty()) {
+            model.addAttribute("article", article.get());
+            return "edit";
+        } else {
+            return"error";
+        }
+    }
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable Long id, ArticleDto articleDto,Model model) {
+        Article article = articleRepository.save(articleDto.toEntity());
+        model.addAttribute("article", article);
+        return "redirect:/articles";
+    }
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        articleRepository.deleteById(id);
+        return "redirect:/articles";
+    }
+
+
 
 
 }
