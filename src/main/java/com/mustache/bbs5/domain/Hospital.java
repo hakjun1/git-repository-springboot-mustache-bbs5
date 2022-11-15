@@ -22,8 +22,9 @@ public class Hospital {
     private String hospitalName;
     private Integer patientRoomCount;
     private Integer totalNumberOfBeds;
-    private Float totalAreaSize;
     private String businessTypeName;
+    private Integer businessStatusCode;
+    private Float totalAreaSize;
 
     // HospitalEntity를 HospitalResponse Dto로 만들어주는 부분
     public static HospitalResponse of(Hospital hospital) {
