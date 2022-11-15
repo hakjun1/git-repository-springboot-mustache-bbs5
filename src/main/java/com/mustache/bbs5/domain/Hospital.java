@@ -15,17 +15,23 @@ public class Hospital {
     @Id//
     private Integer id;
 
-    @Column(name="road_name_address")
+    @Column(name = "road_name_address")
     private String roadNameAddress;
 
-    @Column(name="hospital_name")
+    @Column(name = "hospital_name")
     private String hospitalName;
     private Integer patientRoomCount;
     private Integer totalNumberOfBeds;
     private Float totalAreaSize;
     private String businessTypeName;
 
-//    public static HospitalResponse of(Hospital hospital) {
-//        return new HospitalResponse(hospital.getId(),hospital.getHospitalName(),hospital.getRoadNameAddress());
-//    }
+    // HospitalEntity를 HospitalResponse Dto로 만들어주는 부분
+    public static HospitalResponse of(Hospital hospital) {
+        return new HospitalResponse(hospital.getId(),
+                hospital.getRoadNameAddress(), hospital.getHospitalName(),
+                hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(),
+                hospital.getTotalAreaSize());
+
+
+    }
 }
